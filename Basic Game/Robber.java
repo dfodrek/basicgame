@@ -6,26 +6,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Robber extends Actor
+public class Robber extends Person
 {
-    private int delay;
-    private int delayCounter;
+
  
     public Robber(){
-        this.delay=10;
-        this.delayCounter=0;
+        super(6);     //pozivanje konstruktora iz nadklase s delay 6
     }
     
-    public void act()
-    {
-        if (this.delayCounter==this.delay)
-        {
-            this.movement();
-            this.delayCounter=0;
-        }else{
-            this.delayCounter++;
-        }
-    }
+    //act metoda ne treba jer je identična metodi iz nadklase
+    //ako ipak želimo metodu, može izgledati ovako:
+    //public void act()
+    //{
+    //    super.act();  //pozivanje act metode iz nadklase
+    //}
+    
     public void movement(){
         this.setRotation(90*Greenfoot.getRandomNumber(4));   //brojevi 0-3, koji će se množiti sa 90 stupnjeva
         this.move(1);

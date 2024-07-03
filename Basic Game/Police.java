@@ -6,22 +6,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Police extends Actor
+public class Police extends Person
 {
+     
     private String up;
     private String down;
     private String left;
     private String right;
-    private int delay;
-    private int delayCounter;
+    
     
     public Police(String up, String down, String left, String right){
-        this.up=up;
+        super(3);  //delay
+        this.up=up; 
         this.down=down;
         this.left=left;
         this.right=right;
-        this.delay=3;
-        this.delayCounter=0;
     }
     
     /**
@@ -30,13 +29,8 @@ public class Police extends Actor
      */
     public void act()
     {
-        if (this.delayCounter==this.delay)
-        {
-            this.movement();
-            this.delayCounter=0;
-        }else{
-            this.delayCounter++;
-        }
+        super.act();  //pozivanje act metode iz nadklase
+        
         if(this.isTouching(Robber.class)){   //ako policemen dođe do robbera
             Greenfoot.stop();   //igra se zaustavlja
         }
