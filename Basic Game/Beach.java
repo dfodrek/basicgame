@@ -23,4 +23,16 @@ public class Beach extends World
         Greenfoot.getRandomNumber(this.getWidth()),
         Greenfoot.getRandomNumber(this.getHeight()));
     }
+    
+    public void endTheGame(boolean win){  //parametar
+        int x=this.getWidth()/2;    //pozicioniranje na sredinu Worlda: x,y koordinate
+        int y=this.getHeight()/2;
+        String message;
+        if (win){
+            message="The robber was caught. You won!";
+        } else{
+            message="The robber escaped. You lost!";
+        }
+        this.showText(message, x, y);
+    }
 }
