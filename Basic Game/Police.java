@@ -39,19 +39,28 @@ public class Police extends Person
     }
     public void movement()
     {
+       int x=this.getX();   //dohvaćanje x i y pozicija
+       int y=this.getY();
+        
        if (Greenfoot.isKeyDown(this.up)){
             this.setRotation(270);
-            this.move(1);    //this - any policeguy (radimo sa instancom te klase)
+            //this.move(1);    //this - any policeguy (radimo sa instancom te klase)
+            y--;
         } else if (Greenfoot.isKeyDown(this.down)){
             this.setRotation(90);
-            this.move(1);
+            y++;
         } else if (Greenfoot.isKeyDown(this.left)){
             this.setRotation(180);
-            this.move(1);
+            x--;
         }else if (Greenfoot.isKeyDown(this.right)){
             this.setRotation(0);
-            this.move(1);  
+            x++;  
         } 
+       
+        //ako na poziciji x,y nije hidingspot
+        if (this.getWorld().getObjectsAt(x,y,HidingSpot.class).isEmpty()){
+            this.setLocation(x, y); //postavi se na poziciju x,y
+        }
     }
     
 }
