@@ -32,7 +32,9 @@ public class Police extends Person
         super.act();  //pozivanje act metode iz nadklase
         
         if(this.isTouching(Robber.class)){   //ako policemen dođe do robbera
-            Greenfoot.stop();   //igra se zaustavlja
+            World world=this.getWorld();
+            Beach beach=(Beach)world;  //klasa World nema metodu za kraj igre
+            beach.endTheGame(true);   //sad se može pozvati metoda endTheGame
         }
     }
     public void movement()
