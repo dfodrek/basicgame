@@ -45,16 +45,21 @@ public class Beach extends World
     private void prepareTheBeach(){
         this.addObject(new Police("w","s","a","d"), 0, 0);
         
-        int x=0;
-        int y=0;
         
-        while(!this.getObjectsAt(x,y,Police.class).isEmpty()){  //ako pozicija nije empty
-            x=Greenfoot.getRandomNumber(this.getWidth());  //random koordinate
-            y=Greenfoot.getRandomNumber(this.getHeight());
+        for (int i=0; i<10; i++){   //stvaranje 10 HidingSpota
             
+            int x=0;
+            int y=0;
+        
+            while(!this.getObjectsAt(x,y,Actor.class).isEmpty()){  //ako pozicija nije empty
+                x=Greenfoot.getRandomNumber(this.getWidth());  //random koordinate
+                y=Greenfoot.getRandomNumber(this.getHeight());
+            
+            }
+        
+            this.addObject(new HidingSpot(), x, y);  //stvaranje objekta HidingSpot na koordinatama x,y
         }
         
-        this.addObject(new HidingSpot(), x, y);  //stvaranje objekta HidingSpot na koordinatama x,y
         //this.addObject(new Police("up","down","left","right"), 5, 5);
         this.addObject(
             new Robber(),
