@@ -8,20 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Beach extends World
 {
-
-    /**
-     * Constructor for objects of class Beach.
-     * 
-     */
+    private int counter;   //uvjet za lose game (vrijeme)
+    
     public Beach()
     {    
         // Create a new world with 15x10 cells with a cell size of 60*60 pixels.
         super(15, 10, 60); //cells in a row (width), height, dimension of 1 cell
         this.addObject(new Police("w","s","a","d"), 0, 0);
         //this.addObject(new Police("up","down","left","right"), 5, 5);
-        this.addObject(new Robber(),
-        Greenfoot.getRandomNumber(this.getWidth()),
-        Greenfoot.getRandomNumber(this.getHeight()));
+        this.addObject(
+            new Robber(),
+            Greenfoot.getRandomNumber(this.getWidth()),
+            Greenfoot.getRandomNumber(this.getHeight())
+        );
+        
+        this.counter=100;    //100 pozivanja metode act
     }
     
     public void endTheGame(boolean win){  //parametar
@@ -35,5 +36,12 @@ public class Beach extends World
         }
         this.showText(message, x, y);
         Greenfoot.stop();
+    }
+    
+    public void act(){
+        this.counter--;   //svakim actom se counter smanjuje za 1
+        if (this.counter==0){   //kad se counter smanji na 0
+            this.endTheGame(false);   //boolean uvjet je false - poruka za kraj igre se poziva
+        }
     }
 }
