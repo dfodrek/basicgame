@@ -37,6 +37,9 @@ public class Police extends Actor
         }else{
             this.delayCounter++;
         }
+        if(this.isTouching(Robber.class)){   //ako policemen dođe do robbera
+            Greenfoot.stop();   //igra se zaustavlja
+        }
     }
     public void movement()
     {
@@ -54,4 +57,5 @@ public class Police extends Actor
             this.move(1);  
         } 
     }
+    
 }

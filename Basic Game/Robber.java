@@ -12,7 +12,7 @@ public class Robber extends Actor
     private int delayCounter;
  
     public Robber(){
-        this.delay=3;
+        this.delay=10;
         this.delayCounter=0;
     }
     
